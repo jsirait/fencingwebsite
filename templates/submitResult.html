@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<div class="maindiv">
+<h1 style="text-align: center; padding-bottom: 2%; padding-top: 2%;">
+  Submit your tournament result using the form below!</h1>
+</div>
+
+<div class="maindiv">
+<form action="{{url_for('submit_result')}}" method="POST">
+  <div class="form-group row">
+    <label for="nameForm" class="col-sm-2 col-form-label">Your Name</label>
+    <div class="col-sm-10">
+      <select class="form-control" id="nameForm" name="nameForm" required>
+        <option value="" disabled selected>choose...</option>
+        {% for fencer in activeFencers %}
+        <option value= {{fencer['fencer_id']}}>
+          {{fencer['first_name']}} {{fencer['middle_name']}} {{fencer['last_name']}}</option>
+        {% endfor %}
+      </select>
+      <small id="noNameFound" class="form-text text-muted">
+        Don't see your name? <a href="{{url_for('addFencer')}}">Click here to add new fencer (member only)</a>
+      </small>
+    </div>
+  </div>
+
+    <div class="form-group row">
+      <label for="tournamentName" class="col-sm-2 col-form-label">Tournament name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="tournamentName"
+        name="tournamentName"
+        placeholder="type tournament name here"
+        onfocus = "this.placeholder =  ''"
+        onblur = "this.placeholder = 'type tournament name here'"
+        required></div>
+    </div>
+
+    <div class="form-group row">
+      <label for="tournamentDate" class="col-sm-2 col-form-label">Tournament year</label>
+      <div class="col-sm-10">
+        <input class="form-control" type="text" id="tournamentDate" name="tournamentDate"
+            maxlength="4">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="tournamentType" class="col-form-label col-sm-2 pt-0">Tournament type</label>
+      <div class="col-sm-10">
+      <div class="form-check">
+        <input required class="form-check-input" type="radio" name="tournamentType" id="tournamentTypeNat" value="National" checked>
+        <label class="form-check-label" for="tournamentTypeNat">
+          National
+        </label>
+      </div>
+      <div class="form-check">
+        <input required class="form-check-input" type="radio" name="tournamentType" id="tournamentTypeReg" value="Regional">
+        <label class="form-check-label" for="tournamentTypeReg">
+          Regional
+        </label>
+      </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="tournamentDivision" class="col-form-label col-sm-2 pt-0">Division</label>
+      <div class="col-sm-10"><div class="form-check">
+        <input required class="form-check-input" type="radio" name="division" id="divisionWomen" value="Women" checked>
+        <label class="form-check-label" for="divisionWomen">
+          Women
+        </label>
+      </div>
+      <div class="form-check">
+        <input required class="form-check-input" type="radio" name="division" id="divisionMen" value="Men">
+        <label class="form-check-label" for="divisionMen">
+          Men
+        </label>
+      </div></div>
+    </div>
+
+    <div class="form-group row">
+      <label for="weaponType" class="col-form-label col-sm-2 pt-0">Weapon type</label>
+      <div class="col-sm-10"><div class="form-check">
+        <input required class="form-check-input" type="radio" name="weaponType" id="weaponTypeFoil" value="Foil" checked>
+        <label class="form-check-label" for="weaponTypeFoil">
+          Foil
+        </label>
+      </div>
+      <div class="form-check">
+        <input required class="form-check-input" type="radio" name="weaponType" id="weaponTypeEpee" value="Epee">
+        <label class="form-check-label" for="weaponTypeEpee">
+          Epee
+        </label>
+      </div></div>
+    </div>
+
+    <div class="form-group row">
+      <label for="eventType" class="col-sm-2 col-form-label">Event</label>
+      <div class="col-sm-10"><select class="form-control" id="eventType" name="eventType" required>
+        <option value="" disabled selected>choose...</option>
+        <option value="Y10">Y10</option>
+        <option value="Y12">Y12</option>
+        <option value="Y14">Y14</option>
+        <option value="CDT">Cadet</option>
+        <option value="JNR">Junior</option>
+        <option value="D3">DIVIII</option>
+        <option value="D2">DIVII</option>
+        <option value="D1A">DIV1A</option>
+        <option value="D1">DIV1</option>
+        <option value="V40">VET40</option>
+        <option value="V50">VET50</option>
+        <option value="VETCO">VETCO</option>
+      </select></div>
+    </div>
+
+    <div class="form-group row">
+      <label for="placement" class="col-sm-2 col-form-label">Place</label>
+      <div class="col-sm-10">
+        <input required type="number" class="form-control" id="placement"
+       name="placement" placeholder="1"
+       onfocus = "this.placeholder = ''"
+       onblur = "this.placeholder = '1'"></input>
+      <small id="placementHelp" class="form-text text-muted">
+        In what place did you finish? (number only)
+      </small></div>
+    </div>
+
+    <div class="form-group row">
+      <label for="numCompetitors" class="col-sm-2 col-form-label">Number of competitors</label>
+      <div class="col-sm-10"><input required type="number" class="form-control" id="numCompetitors"
+       name="numCompetitors" placeholder="100"
+       onfocus = "this.placeholder = ''"
+       onblur = "this.placeholder = '100'"></input>
+      <small id="numCompetitorsHelp" class="form-text text-muted">
+        How many fencers were there in the event? (number only)
+      </small></div>
+    </div>
+
+    <div class="form-group row">
+      <label for="password-ts" class="col-sm-2 col-form-label">Password</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="password-ts"
+        name="password-ts"
+        placeholder="type password here"
+        onfocus = "this.placeholder =  ''"
+        onblur = "this.placeholder = 'type password here'"
+        required>
+      <small id="passwordHelp" class="form-text text-muted">
+        Type in password to submit this form (password provided on the member-only area
+        of apexfencing.net)
+      </small></div>
+    </div>
+
+    <div class="submitButton">
+    <input class ='submitButton' type="submit" value="Submit">
+    </div>
+
+  </form>
+</div>
+{% endblock %}
+
+
+{% block end_scripts %}
+<script>
+$("#tournamentDate").datepicker({
+    format: "yyyy",
+    viewMode: "years",
+    minViewMode: "years"
+}).on('changeDate', function(e){
+    $(this).datepicker('hide');
+});
+</script>
+{% endblock %}

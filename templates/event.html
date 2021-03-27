@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<div class='maindiv'>
+    <h1 style="text-align: center;">{{eventName}} {{topOrAll_title}}</h1>
+    <div class="buttons">
+      <form method="POST" action="">
+        <div class="form-row">
+          {% if topThree %}
+          <div class="col-md-6 col-sm-12"><input name="topOrAll"
+                                  class="form-control clicked"
+                                  type="submit" id="topThree" role="button"
+                                  value="View Personal Bests"></div>
+          <div class="col-md-6 col-sm-12"><input name="topOrAll" type="submit"
+                  class="form-control" id="allRes"
+                  role="button" value="View All Results"></div>
+          {% else %}
+          <div class="col-md-6 col-sm-12"><input name="topOrAll"
+            class="form-control"
+            type="submit" id="topThree" role="button"
+            value="View Personal Bests"></div>
+          <div class="col-md-6 col-sm-12"><input name="topOrAll" type="submit"
+            class="form-control clicked" id="allRes"
+            role="button" value="View All Results"></div>
+          {% endif %}
+        </div>
+        </form>
+      </div>
+</div>
+
+<div class='maindiv'>
+  <div class="scoping">
+  <div class='scope' id="national">
+    <h2 style="text-align: center;">National</h2>
+    <div class="insideScope">
+      <table>
+      {% for nat in forNational %}
+      <!-- <div class="fencerEntry"> -->
+          <tr class="fencerEntry">
+            <td>{{nat['first_name']}} {{nat['middle_name']}} {{nat['last_name']}}</td>
+            <td>{{nat['fencer_place']}}/{{nat['num_competitors']}} ({{nat['rating_pctg']}}%)</td>
+            <td>{{nat['tournament_name']}} ({{nat['tournament_date']}})</td>
+          </tr>
+      <!-- </div> -->
+      {% endfor %}
+    </table>
+    </div>
+  </div>
+  <div class='scope' id="regional">
+    <h2 style="text-align: center;">Regional</h2>
+    <div class="insideScope">
+      <table>
+      {% for reg in forRegional %}
+      <!--<div class="fencerEntry">-->
+          <tr class="fencerEntryReg">
+            <td>{{reg['first_name']}} {{reg['middle_name']}} {{reg['last_name']}}</td>
+            <td>{{reg['fencer_place']}}/{{reg['num_competitors']}} ({{reg['rating_pctg']}}%)</td>
+            <td>{{reg['tournament_name']}} ({{reg['tournament_date']}})</td>
+          </tr>
+      <!--</div>-->
+      {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}
+
+{% block end_scripts %}
+<script type="text/javascript">
+  $( document ).ready(function() {
+    var True = true;
+    var False = false;
+    var topThree = {{topThree | safe}};
+    var entries = document.querySelectorAll(".fencerEntry")
+    var entriesReg = document.querySelectorAll(".fencerEntryReg")
+    // for nationals
+    if (topThree) {
+      if (entries.length >= 1) {
+        entries[0].style.backgroundColor = "rgb(255, 226, 62)";
+      }
+      if (entries.length >= 2) {
+        entries[1].style.backgroundColor = "rgb(212, 211, 211)";
+      }
+      if (entries.length >= 3) {
+        entries[2].style.backgroundColor = "#cd7f32";
+      }
+    } else {
+      if (entries.length >= 1) {
+        entries[0].style.backgroundColor = "rgb(222, 217, 241)";
+      }
+      if (entries.length >= 2) {
+        entries[1].style.backgroundColor = "inherit";
+      }
+      if (entries.length >= 3) {
+        entries[2].style.backgroundColor = " rgb(222, 217, 241)";
+      }}
+    // for regionals
+    if (topThree) {
+      if (entriesReg.length >= 1) {
+        entriesReg[0].style.backgroundColor = "rgb(255, 226, 62)";
+      }
+      if (entriesReg.length >= 2) {
+        entriesReg[1].style.backgroundColor = "rgb(212, 211, 211)";
+      }
+      if (entriesReg.length >= 3) {
+        entriesReg[2].style.backgroundColor = "#cd7f32";
+      }
+    } else {
+      if (entriesReg.length >= 1) {
+        entriesReg[0].style.backgroundColor = "rgb(222, 217, 241)";
+      }
+      if (entriesReg.length >= 2) {
+        entriesReg[1].style.backgroundColor = "inherit";
+      }
+      if (entriesReg.length >= 3) {
+        entriesReg[2].style.backgroundColor = " rgb(222, 217, 241)";
+      }
+    }});
+</script>
+{% endblock %}

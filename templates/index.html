@@ -1,0 +1,101 @@
+<!-- home page -->
+{% extends "base.html" %}
+
+{% block main_content %}
+
+<div class="maindiv">
+
+<div><h1>Apex Fencing Academy's Virtual Tournament Leaderboard</h1></div>
+
+<div class="division-leaderboard">
+    <div class="division-row">
+        <!-- <h2 class='mx-auto'>Women</h2> -->
+        <table class="lbTable" style="width:100%">
+            <tr>
+                <th colspan="6">Women</th>
+            </tr>
+            <tr>
+                <th colspan="3">Foil</th>
+                <th colspan="3">Epee</th>
+            </tr>
+            <tr>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='D1WF')}}">DIV 1</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='D1AWF')}}">DIV 1A</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='D2WF')}}">DIV II</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='D1WE')}}">DIV 1</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='D1AWE')}}">DIV 1A</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='D2WE')}}">DIV II</a></div></td>
+            </tr>
+            <tr>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='D3WF')}}">DIV III</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='V50WF')}}">VET50</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='V40WF')}}">VET40</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='D3WE')}}">DIV III</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='V50WE')}}">VET50</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='V40WE')}}">VET40</a></div></td>
+            </tr>
+            <tr>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='JNRWF')}}">Junior</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='CDTWF')}}">Cadet</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='VETCOWF')}}">VETCO</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='JNRWE')}}">Junior</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='CDTWE')}}">Cadet</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='VETCOWE')}}">VETCO</a></div></td>
+            </tr>
+            <tr>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='Y14WF')}}">Y14</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='Y12WF')}}">Y12</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='Y10WF')}}">Y10</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='Y14WE')}}">Y14</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='Y12WE')}}">Y12</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='Y10WE')}}">Y10</a></div></td>
+            </tr>
+        </table>
+    </div>
+    <div class="division-row">
+        <!-- <h2 class='mx-auto'>Men</h2> -->
+        <table class="lbTable" style="width:100%">
+            <tr>
+                <th colspan="6">Men</th>
+            </tr>
+            <tr>
+                <th colspan="3">Foil</th>
+                <th colspan="3">Epee</th>
+            </tr>
+            <tr>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='D1MF')}}">DIV 1</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='D1AMF')}}">DIV 1A</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='D2MF')}}">DIV II</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='D1ME')}}">DIV 1</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='D1AME')}}">DIV 1A</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='D2ME')}}">DIV II</a></div></td>
+            </tr>
+            <tr>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='D3MF')}}">DIV III</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='V50MF')}}">VET50</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='V40MF')}}">VET40</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='D3ME')}}">DIV III</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='V50ME')}}">VET50</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='V40ME')}}">VET40</a></div></td>
+            </tr>
+            <tr>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='JNRMF')}}">Junior</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='CDTMF')}}">Cadet</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='VETCOMF')}}">VETCO</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='JNRME')}}">Junior</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='CDTME')}}">Cadet</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='VETCOME')}}">VETCO</a></div></td>
+            </tr>
+            <tr>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='Y14MF')}}">Y14</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='Y12MF')}}">Y12</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='Y10MF')}}">Y10</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='Y14ME')}}">Y14</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='Y12ME')}}">Y12</a></div></td>
+                <td><div class="intd"><a href="{{url_for('specificEvent', eventCode='Y10ME')}}">Y10</a></div></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</div>
+{% endblock %}
